@@ -1,0 +1,1201 @@
+{
+  "info": {
+    "_postman_id": "8f0b3a5e-1c2d-4e6f-9a7b-3d5c8e1f0a42",
+    "name": "Inscripciones API",
+    "description": "Colección con todos los métodos HTTP disponibles para cada tabla del API REST de inscripciones. Usa la variable baseUrl (por defecto http://localhost:8080/inscripciones-1.0-SNAPSHOT, según el WAR generado) y ajusta los ids según tus datos.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "noauth"
+  },
+  "item": [
+    {
+      "name": "Usuarios",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana\",\n  \"apellidoP\": \"Pérez\",\n  \"apellidoM\": \"López\",\n  \"email\": \"ana@example.com\",\n  \"password\": \"123456\",\n  \"telefono\": \"5551234567\",\n  \"emailInstitucional\": \"ana@escuela.edu.mx\",\n  \"noDeControl\": \"20260001\",\n  \"genero\": \"F\",\n  \"idRol\": 1,\n  \"idCarrera\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ana María\",\n  \"apellidoP\": \"Pérez\",\n  \"apellidoM\": \"López\",\n  \"email\": \"ana@example.com\",\n  \"password\": \"123456\",\n  \"telefono\": \"5551234567\",\n  \"emailInstitucional\": \"ana@escuela.edu.mx\",\n  \"noDeControl\": \"20260001\",\n  \"genero\": \"F\",\n  \"idRol\": 1,\n  \"idCarrera\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"telefono\": \"5559876543\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/usuarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "usuarios", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Roles",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Coordinador\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/roles",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Administrador\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Tutor\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/roles/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "roles", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Carreras",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ingeniería\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Ingeniería en Sistemas\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Licenciatura en Sistemas\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/carreras/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "carreras", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tipos de actividad",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Taller\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Seminario\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Conferencia\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/tipos-actividad/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "tipos-actividad", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Actividades",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Taller de programación\",\n  \"creditos\": 2,\n  \"idTipoDeActividad\": 1,\n  \"idCarrera\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nombre\": \"Taller de programación avanzada\",\n  \"creditos\": 3,\n  \"idTipoDeActividad\": 1,\n  \"idCarrera\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"creditos\": 4\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividades/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividades", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Requisitos",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descripcion\": \"Estar inscrito en el semestre actual\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descripcion\": \"Aprobar todas las materias del semestre anterior\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"descripcion\": \"Tener promedio mínimo de 80\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/requisitos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "requisitos", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Actividad-Requisito (clave compuesta)",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por clave",
+          "description": "La URL debe incluir idActividad/idRequisito.",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito/{{idActividad}}/{{idRequisito}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito", "{{idActividad}}", "{{idRequisito}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idActividad\": 1,\n  \"idRequisito\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idActividad\": 1,\n  \"idRequisito\": 2\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito/{{idActividad}}/{{idRequisito}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito", "{{idActividad}}", "{{idRequisito}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idRequisito\": 3\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito/{{idActividad}}/{{idRequisito}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito", "{{idActividad}}", "{{idRequisito}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/actividad-requisito/{{idActividad}}/{{idRequisito}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "actividad-requisito", "{{idActividad}}", "{{idRequisito}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Grupos",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clave\": \"G1\",\n  \"cupoMaximo\": 30,\n  \"cupoMinimo\": 10,\n  \"genero\": \"MI\",\n  \"idActividad\": 1,\n  \"idUsuario\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"clave\": \"G2\",\n  \"cupoMaximo\": 35,\n  \"cupoMinimo\": 12,\n  \"genero\": \"MI\",\n  \"idActividad\": 1,\n  \"idUsuario\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cupoMaximo\": 40\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/grupos/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "grupos", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Horarios",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dia\": \"Lunes\",\n  \"horaInicio\": \"08:00:00\",\n  \"horaFin\": \"10:00:00\",\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"dia\": \"Martes\",\n  \"horaInicio\": \"09:00:00\",\n  \"horaFin\": \"11:00:00\",\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"horaFin\": \"12:00:00\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/horarios/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "horarios", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Inscripciones",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"periodo\": \"2026-1\",\n  \"estatus\": \"Inscrito\",\n  \"creditosObtenidos\": 0,\n  \"resultadoFinal\": \"\",\n  \"idUsuario\": 1,\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"periodo\": \"2026-1\",\n  \"estatus\": \"Aprobado\",\n  \"creditosObtenidos\": 2,\n  \"resultadoFinal\": \"Aprobado\",\n  \"idUsuario\": 1,\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estatus\": \"Aprobado\",\n  \"creditosObtenidos\": 2\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/inscripciones/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "inscripciones", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sesiones de asistencia (clave compuesta)",
+      "item": [
+        {
+          "name": "Listar todas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por clave",
+          "description": "La URL debe incluir idInscripcion/idHorario/fecha (AAAA-MM-DD).",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia/{{idInscripcion}}/{{idHorario}}/{{fecha}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia", "{{idInscripcion}}", "{{idHorario}}", "{{fecha}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idInscripcion\": 1,\n  \"idHorario\": 1,\n  \"fecha\": \"2026-03-10\",\n  \"estado\": \"Presente\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"idInscripcion\": 1,\n  \"idHorario\": 1,\n  \"fecha\": \"2026-03-10\",\n  \"estado\": \"Ausente\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia/{{idInscripcion}}/{{idHorario}}/{{fecha}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia", "{{idInscripcion}}", "{{idHorario}}", "{{fecha}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"estado\": \"Justificado\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia/{{idInscripcion}}/{{idHorario}}/{{fecha}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia", "{{idInscripcion}}", "{{idHorario}}", "{{fecha}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/sesion-asistencia/{{idInscripcion}}/{{idHorario}}/{{fecha}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "sesion-asistencia", "{{idInscripcion}}", "{{idHorario}}", "{{fecha}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Mensajes de grupo",
+      "item": [
+        {
+          "name": "Listar todos",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Obtener por id",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Crear",
+          "description": "fechaHora la genera la base de datos; no es necesario enviarla.",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contenido\": \"Hola grupo\",\n  \"idUsuario\": 1,\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar (PUT)",
+          "request": {
+            "method": "PUT",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contenido\": \"Mensaje actualizado\",\n  \"idUsuario\": 1,\n  \"idGrupo\": 1\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Actualizar parcial (PATCH)",
+          "request": {
+            "method": "PATCH",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contenido\": \"Mensaje editado\"\n}",
+              "options": { "raw": { "language": "json" } }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo", "{{id}}"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Eliminar",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/mensajes-grupo/{{id}}",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "mensajes-grupo", "{{id}}"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080/inscripciones-1.0-SNAPSHOT" },
+    { "key": "id", "value": "1" },
+    { "key": "idActividad", "value": "1" },
+    { "key": "idRequisito", "value": "1" },
+    { "key": "idInscripcion", "value": "1" },
+    { "key": "idHorario", "value": "1" },
+    { "key": "fecha", "value": "2026-03-10" }
+  ]
+}

@@ -1,0 +1,223 @@
+
+.login-page {
+  min-height: 100vh;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+/* Imagen decorativa del fondo */
+.login-page::before {
+  content: "";
+  position: absolute;
+  left: -80px;
+  top: 100px;
+  width: 550px;
+  height: 850px;
+  background-image: url('/assets/images/fondo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.08;
+  pointer-events: none;
+}
+
+/* Logo */
+.logo {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
+}
+
+.logo img {
+  width: 230px;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Contenedor principal */
+.login-container {
+  width: 850px;
+  max-width: 90%;
+  margin-top: 115px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Encabezado */
+header {
+  text-align: center;
+}
+
+header h1 {
+  font-size: 40px;
+  color: #14182a;
+  margin-bottom: 12px;
+}
+
+header h2 {
+  font-size: 36px;
+  font-weight: normal;
+  letter-spacing: 5px;
+  margin-top: 0;
+}
+
+header p {
+  margin: 0;
+  font-size: 23px;
+}
+
+/* Selector de roles */
+.role-selector {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  margin: 42px 0 50px;
+}
+
+
+
+.role-selector button {
+  padding: 15px 30px;
+  border-radius: 40px;
+  border: 1px solid #bbb;
+  background: white;
+  color: #999;
+  font-size: 23px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.role-selector button.active {
+  background: #14182a;
+  color: white;
+  border-color: #14182a;
+}
+
+/* Formulario */
+form {
+  width: 66%;
+  margin: auto;
+}
+
+.form-group {
+  margin-bottom: 85px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 30px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.form-group input {
+  width: 100%;
+  height: 42px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px 15px;
+  font-size: 28px;
+  outline: none;
+}
+
+.form-group input:focus {
+  border-color: #8ba8e8;
+}
+
+/* Mostrar contraseña */
+.show-password {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: -65px;
+  font-size: 19px;
+}
+
+.show-password input {
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+
+/* Botón ingresar */
+.login-button {
+  display: block;
+  margin: 80px auto 0;
+  width: 55%;
+  height: 55px;
+  background: white;
+  border: 1px solid #8ba8e8;
+  border-radius: 8px;
+  color: #7d9bd9;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.login-button:hover {
+  background: #14182a;
+  color: white;
+}
+
+.forgot-password {
+  display: block;
+  text-align: center;
+  margin-top: 75px;
+  color: #8ba8e8;
+  font-size: 20px;
+  text-decoration: none;
+}
+
+/* Adaptación a móviles */
+@media (max-width: 768px) {
+
+  .login-container {
+    margin-top: 150px;
+  }
+
+  header h1 {
+    font-size: 25px;
+  }
+
+  header h2 {
+    font-size: 24px;
+  }
+
+  .logo img {
+    width: 100px;
+  }
+
+  .role-selector {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .role-selector button {
+    font-size: 16px;
+    padding: 12px 18px;
+  }
+
+  form {
+    width: 95%;
+  }
+
+  .form-group label {
+    font-size: 20px;
+  }
+
+  .form-group input {
+    font-size: 18px;
+  }
+
+  .login-button {
+    width: 80%;
+    font-size: 22px;
+  }
+}

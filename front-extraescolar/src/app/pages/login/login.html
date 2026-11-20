@@ -1,0 +1,82 @@
+
+<div class="login-page">
+
+  <div class="logo">
+    <img src="assets/images/logo.png" alt="Logo">
+  </div>
+
+  <div class="login-container">
+
+    <header>
+      <h1>ACTIVIDADES COMPLEMENTARIAS</h1>
+      <h2>INICIO DE SESIÓN</h2>
+      <p>¿Quien eres?</p>  
+    </header>
+
+    <div class="role-selector">
+      <button
+        type="button"
+        [class.active]="selectedRole === 'ALUMNO'"
+        (click)="selectRole('ALUMNO')">
+        ALUMNO
+      </button>
+
+      <button
+        type="button"
+        [class.active]="selectedRole === 'ENCARGADO'"
+        (click)="selectRole('ENCARGADO')">
+        ENCARGADO
+      </button>
+
+    </div>
+
+    <form (ngSubmit)="login()">
+
+      <div class="form-group">
+        <label for="username">USUARIO:</label>
+
+        <input
+          type="text"
+          id="username"
+          name="username"
+          [(ngModel)]="username"
+          placeholder="ej.23160832"
+          required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">CONTRASEÑA:</label>
+
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          id="password"
+          name="password"
+          [(ngModel)]="password"
+          placeholder="escribe aqui..."
+          required>
+      </div>
+
+      <div class="show-password">
+        <input
+          type="checkbox"
+          id="showPassword"
+          (change)="togglePassword()">
+
+        <label for="showPassword">
+          MOSTRAR CONTRASEÑA
+        </label>
+      </div>
+
+      <button type="submit" class="login-button">
+        INGRESAR
+      </button>
+
+    </form>
+
+    <a href="#" class="forgot-password">
+      OLVIDASTE TU CONTRASEÑA?
+    </a>
+
+  </div>
+
+</div>
