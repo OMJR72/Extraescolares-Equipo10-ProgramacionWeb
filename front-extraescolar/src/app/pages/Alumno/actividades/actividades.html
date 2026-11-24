@@ -76,3 +76,31 @@
   </div>
 
 </section>
+
+<div *ngIf="actividadPendiente as pendiente" class="modal-overlay" (click)="cancelarCambio()">
+  <div
+    class="modal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-titulo"
+    (click)="$event.stopPropagation()">
+
+    <div class="modal-icono">!</div>
+
+    <h2 id="modal-titulo">¿Cambiar de actividad?</h2>
+
+    <p>
+      Ya estás inscrito en <strong>{{ actividadInscrita?.actividad }}</strong> y solo puedes estar en una actividad a la vez.
+    </p>
+
+    <p>
+      Si continúas, saldrás de <strong>{{ actividadInscrita?.actividad }}</strong> y te inscribirás en
+      <strong>{{ pendiente.actividad }}</strong>.
+    </p>
+
+    <div class="modal-acciones">
+      <button type="button" class="cancelar" (click)="cancelarCambio()">Cancelar</button>
+      <button type="button" class="confirmar" (click)="confirmarCambio()">Salir e inscribirme</button>
+    </div>
+  </div>
+</div>

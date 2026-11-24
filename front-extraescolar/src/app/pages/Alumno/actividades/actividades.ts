@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 type EstadoActividad = 'Inscribirme' | 'Inscrito' | 'Lleno';
@@ -25,6 +25,7 @@ export class Actividades {
 
   searchTerm = '';
   currentPage = 1;
+  actividadPendiente: ActividadItem | null = null;
 
   actividades: ActividadItem[] = [
     {
@@ -164,6 +165,10 @@ export class Actividades {
     return Array.from({ length: this.totalPages }, (_, index) => index + 1);
   }
 
+  get actividadInscrita(): ActividadItem | null {
+    return this.actividades.find((item) => item.estado === 'Inscrito') ?? null;
+  }
+
   onSearchChange(): void {
     this.currentPage = 1;
   }
@@ -185,7 +190,38 @@ export class Actividades {
       return;
     }
 
-    actividad.estado = 'Inscrito';
+    const inscrita = this.actividadInscrita;
+
+    if (!inscrita || inscrita === actividad) {
+      actividad.estado = 'Inscrito';
+      return;
+    }
+
+    this.actividadPendiente = actividad;
+  }
+
+  cancelarCambio(): void {
+    this.actividadPendiente = null;
+  }
+
+  confirmarCambio(): void {
+    if (!this.actividadPendiente) {
+      return;
+    }
+
+    const inscrita = this.actividadInscrita;
+
+    if (inscrita && inscrita !== this.actividadPendiente) {
+      inscrita.estado = 'Inscribirme';
+    }
+
+    this.actividadPendiente.estado = 'Inscrito';
+    this.actividadPendiente = null;
+  }
+
+  @HostListener('document:keydown.escape')
+  cerrarConEscape(): void {
+    this.cancelarCambio();
   }
 
   irAPagina(page: number): void {

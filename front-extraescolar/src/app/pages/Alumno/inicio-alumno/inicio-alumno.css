@@ -2,6 +2,7 @@
 .inicio h1 {
   font-size: 38px;
   margin-bottom: 35px;
+  font-family: Arial, sans-serif;
 }
 
 .inicio section {
@@ -11,6 +12,7 @@
 .inicio h2 {
   font-size: 21px;
   color: #14182a;
+  font-family: Arial, sans-serif;
 }
 
 .inicio p {
@@ -18,4 +20,5 @@
   color: #454b56;
   line-height: 1.5;
   max-width: 850px;
+  font-family: Arial, sans-serif;
 }

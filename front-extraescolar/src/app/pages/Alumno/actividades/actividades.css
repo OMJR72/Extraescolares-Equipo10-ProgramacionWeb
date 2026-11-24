@@ -163,6 +163,92 @@ tbody tr:hover {
   cursor: not-allowed;
 }
 
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(20, 24, 42, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 28px;
+  box-sizing: border-box;
+  box-shadow: 0 18px 50px rgba(20, 24, 42, 0.3);
+  text-align: center;
+}
+
+.modal-icono {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #fff1cf;
+  color: #a86b00;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: bold;
+}
+
+.modal h2 {
+  margin: 0 0 14px;
+  font-size: 23px;
+}
+
+.modal p {
+  margin: 0 0 12px;
+  color: #454b56;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.modal-acciones {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+}
+
+.modal-acciones button {
+  min-width: 140px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.cancelar {
+  background: #ffffff;
+  color: #454b56;
+  border: 1px solid #cbd5e8;
+}
+
+.cancelar:hover {
+  background: #f6f9ff;
+}
+
+.confirmar {
+  background: #2450d8;
+  color: #ffffff;
+  border: 1px solid #2450d8;
+}
+
+.confirmar:hover {
+  background: #1b3fa9;
+}
+
 @media (max-width: 768px) {
   .page-header h1 {
     font-size: 26px;
@@ -179,6 +265,18 @@ tbody tr:hover {
   }
 
   .search-card input {
+    width: 100%;
+  }
+
+  .modal {
+    padding: 22px;
+  }
+
+  .modal-acciones {
+    flex-direction: column;
+  }
+
+  .modal-acciones button {
     width: 100%;
   }
 }
