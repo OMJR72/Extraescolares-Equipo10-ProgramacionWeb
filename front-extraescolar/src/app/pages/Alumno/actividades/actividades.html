@@ -1,0 +1,78 @@
+<section class="page">
+
+  <header class="page-header">
+    <h1>Actividades complementarias</h1>
+    <p>Consulta las actividades disponibles y realiza tu inscripción.</p>
+  </header>
+
+  <div class="search-card">
+    <label for="busqueda">Buscar actividad</label>
+    <input
+      id="busqueda"
+      type="search"
+      [(ngModel)]="searchTerm"
+      (ngModelChange)="onSearchChange()"
+      placeholder="Actividad, carrera o encargado">
+  </div>
+
+  <div class="table-card">
+    <div class="table-scroll">
+      <table>
+        <thead>
+          <tr>
+            <th>Actividad</th>
+            <th>Créditos</th>
+            <th>Carrera</th>
+            <th>Encargado</th>
+            <th>Cupos</th>
+            <th>Horario</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actividad of pagedActividades">
+            <td class="actividad">{{ actividad.actividad }}</td>
+            <td>{{ actividad.creditos }}</td>
+            <td>{{ actividad.carrera }}</td>
+            <td>{{ actividad.encargado }}</td>
+            <td>{{ actividad.cupos }}</td>
+            <td>{{ actividad.horario }}</td>
+            <td>
+              <button
+                type="button"
+                class="action-button"
+                [ngClass]="estadoClass(actividad.estado)"
+                [disabled]="actividad.estado !== 'Inscribirme'"
+                (click)="inscribir(actividad)">
+                {{ actividad.estado }}
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p *ngIf="filteredActividades.length === 0" class="empty">
+      No se encontraron actividades con ese criterio.
+    </p>
+
+    <nav class="pagination" aria-label="Paginación de actividades">
+      <button type="button" [disabled]="currentPage === 1" (click)="irAPagina(currentPage - 1)">
+        Anterior
+      </button>
+
+      <button
+        type="button"
+        *ngFor="let page of pages"
+        [class.active]="page === currentPage"
+        (click)="irAPagina(page)">
+        {{ page }}
+      </button>
+
+      <button type="button" [disabled]="currentPage === totalPages" (click)="irAPagina(currentPage + 1)">
+        Siguiente
+      </button>
+    </nav>
+  </div>
+
+</section>

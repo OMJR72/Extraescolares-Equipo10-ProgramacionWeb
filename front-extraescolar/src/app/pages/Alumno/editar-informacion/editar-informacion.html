@@ -1,0 +1,44 @@
+<section class="page">
+
+  <header class="page-header">
+    <h1>Editar información adicional</h1>
+    <p>Actualiza tus datos de contacto.</p>
+  </header>
+
+  <form class="form-card" #infoForm="ngForm" (ngSubmit)="guardar()" novalidate>
+    <div class="campo">
+      <label for="telefono">Teléfono</label>
+      <input
+        id="telefono"
+        name="telefono"
+        type="tel"
+        [(ngModel)]="telefono"
+        #telefono="ngModel"
+        required
+        pattern="[0-9]{8,15}">
+      <p class="error" *ngIf="telefono.invalid && (telefono.dirty || telefono.touched)">
+        Ingresa entre 8 y 15 dígitos, sin espacios ni guiones.
+      </p>
+    </div>
+
+    <div class="campo">
+      <label for="correoAdicional">Correo adicional</label>
+      <input
+        id="correoAdicional"
+        name="correoAdicional"
+        type="email"
+        [(ngModel)]="correoAdicional"
+        #correo="ngModel"
+        required
+        email>
+      <p class="error" *ngIf="correo.invalid && (correo.dirty || correo.touched)">
+        Ingresa un correo electrónico válido.
+      </p>
+    </div>
+
+    <button type="submit" class="guardar" [disabled]="infoForm.invalid">Guardar</button>
+
+    <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+  </form>
+
+</section>
