@@ -1,0 +1,221 @@
+:host {
+  --negro: #000000;
+  --blanco: #ffffff;
+  --azul: #6092dd;
+  --rojo: #e51b1e;
+  --gris-texto: #999999;
+  --gris-borde: #cccccc;
+
+  --fuente: 'Space Mono', 'IBM Plex Mono', 'Courier New', Courier, monospace;
+
+  display: block;
+  min-height: 100vh;
+  background-color: var(--blanco);
+  color: var(--negro);
+  font-family: var(--fuente);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Pantalla y marca de agua ---------- */
+.pantalla {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(2rem, 7vw, 6.5rem) 1.25rem 3rem;
+  overflow: hidden;
+  background-image: url('/fondo.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 95%;
+}
+
+.logo {
+  position: absolute;
+  top: 1rem;
+  right: clamp(1rem, 4vw, 3rem);
+  width: clamp(90px, 10vw, 150px);
+  height: auto;
+}
+
+/* ---------- Tarjeta central ---------- */
+.tarjeta {
+  width: 100%;
+  max-width: 834px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3rem, 9vw, 6.5rem);
+}
+
+.encabezado {
+  text-align: center;
+}
+
+.titulo {
+  margin: 0;
+  font-size: clamp(1.25rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* ---------- Formulario ---------- */
+.formulario {
+  width: min(100%, 551px);
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+}
+
+.campo__etiqueta {
+  margin-bottom: 0.9rem;
+  font-size: clamp(1rem, 2.1vw, 1.75rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.campo__entrada {
+  width: 100%;
+  height: 40px;
+  padding: 0 1.25rem;
+  border: 1px solid var(--gris-borde);
+  border-radius: 4px;
+  background-color: var(--blanco);
+  color: var(--negro);
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  letter-spacing: 0.04em;
+}
+
+.campo__entrada::placeholder {
+  color: var(--gris-texto);
+  opacity: 1;
+}
+
+.campo__entrada:focus-visible,
+.boton:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* ---------- Aviso ---------- */
+.aviso {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.75rem;
+  margin-top: 2rem;
+}
+
+.aviso__icono {
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+}
+
+.aviso__texto {
+  margin: 0;
+  font-size: clamp(0.85rem, 1.6vw, 1.3rem);
+  line-height: 1.5;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.error {
+  margin: 1rem 0 0;
+  color: var(--rojo);
+  font-size: 0.95rem;
+}
+
+/* ---------- Acciones ---------- */
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.25rem;
+  margin-top: clamp(3rem, 12vw, 10rem);
+}
+
+.boton {
+  width: min(100%, 325px);
+  height: 55px;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  background-color: var(--blanco);
+  font-family: inherit;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boton--aceptar {
+  color: var(--azul);
+}
+
+.boton--aceptar:hover:not(:disabled) {
+  background-color: var(--azul);
+  color: var(--blanco);
+}
+
+.boton--volver {
+  color: var(--rojo);
+}
+
+.boton--volver:hover {
+  background-color: var(--rojo);
+  color: var(--blanco);
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 720px) {
+  .pantalla {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.5rem;
+    background-size: auto 60%;
+    background-position: left bottom;
+  }
+
+  .logo {
+    position: static;
+    margin-bottom: 1.5rem;
+    width: 90px;
+  }
+
+  .tarjeta {
+    gap: 2.5rem;
+  }
+
+  .aviso {
+    gap: 1rem;
+  }
+
+  .aviso__icono {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .boton {
+    transition: none;
+  }
+}

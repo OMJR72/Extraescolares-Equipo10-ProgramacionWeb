@@ -1,0 +1,273 @@
+:host {
+  --blanco: #ffffff;
+  --gris-texto: #999999;
+  --negro: #000000;
+  --azul: #6092dd;
+  --gris-borde: #cccccc;
+  --azul-oscuro: #0f172a;
+
+  --fuente: 'Space Mono', 'IBM Plex Mono', 'Courier New', Courier, monospace;
+
+  display: block;
+  min-height: 100vh;
+  background-color: var(--blanco);
+  color: var(--negro);
+  font-family: var(--fuente);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* ---------- Pantalla y marca de agua ---------- */
+.pantalla {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: clamp(2rem, 7vw, 6.5rem) 1.25rem 3rem;
+  overflow: hidden;
+  background-image: url('/fondo.png');
+  background-repeat: no-repeat;
+  background-position: left center;
+  background-size: auto 95%;
+}
+
+.logo {
+  position: absolute;
+  top: 1rem;
+  right: clamp(1rem, 4vw, 3rem);
+  width: clamp(90px, 10vw, 150px);
+  height: auto;
+}
+
+/* ---------- Tarjeta central ---------- */
+.tarjeta {
+  width: 100%;
+  max-width: 834px;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.encabezado {
+  text-align: center;
+}
+
+.titulo {
+  margin: 0;
+  font-size: clamp(1.25rem, 3.4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.subtitulo {
+  margin: clamp(0.5rem, 2vw, 1.25rem) 0 0;
+  font-size: clamp(1.25rem, 3.4vw, 2.5rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* ---------- Selector de rol ---------- */
+.roles {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(0.5rem, 3.5vw, 2rem);
+}
+
+.rol {
+  height: 64px;
+  padding: 0 0.5rem;
+  border: 1px solid var(--gris-borde);
+  border-radius: 32px;
+  background-color: var(--blanco);
+  color: var(--gris-texto);
+  font-family: inherit;
+  font-size: clamp(0.7rem, 1.8vw, 1.5rem);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.rol:hover:not(.rol--activo) {
+  color: var(--negro);
+}
+
+.rol--activo {
+  background-color: var(--azul-oscuro);
+  border-color: var(--azul-oscuro);
+  color: var(--blanco);
+}
+
+.rol:focus-visible,
+.boton:focus-visible,
+.enlace:focus-visible,
+.campo__entrada:focus-visible,
+.mostrar__casilla:focus-visible {
+  outline: 2px solid var(--azul);
+  outline-offset: 2px;
+}
+
+/* ---------- Formulario ---------- */
+.formulario {
+  width: 100%;
+  padding-inline: clamp(0rem, 5vw, 2.7rem);
+  display: flex;
+  flex-direction: column;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  width: min(100%, 551px);
+}
+
+.campo--password {
+  margin-top: clamp(1.5rem, 5vw, 3.5rem);
+}
+
+.campo__etiqueta {
+  margin-bottom: 1.1rem;
+  font-size: clamp(1.1rem, 2.4vw, 1.9rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.campo__entrada {
+  width: 100%;
+  height: 40px;
+  padding: 0 1rem;
+  border: 1px solid var(--gris-borde);
+  border-radius: 4px;
+  background-color: var(--blanco);
+  color: var(--negro);
+  font-family: inherit;
+  font-size: clamp(1rem, 2vw, 1.75rem);
+  letter-spacing: 0.04em;
+}
+
+.campo__entrada::placeholder {
+  color: var(--gris-texto);
+  opacity: 1;
+}
+
+.mostrar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.2rem;
+  font-size: clamp(0.8rem, 1.5vw, 1.15rem);
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mostrar__casilla {
+  width: 35px;
+  height: 28px;
+  margin: 0;
+  flex-shrink: 0;
+  accent-color: var(--azul-oscuro);
+  cursor: pointer;
+}
+
+.error {
+  width: min(100%, 551px);
+  margin: 1rem 0 0;
+  color: #b42318;
+  font-size: 0.95rem;
+}
+
+/* ---------- Acciones ---------- */
+.acciones {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.9rem;
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.boton {
+  width: min(100%, 306px);
+  height: 52px;
+  border: 1px solid var(--azul);
+  border-radius: 4px;
+  background-color: var(--blanco);
+  color: var(--azul);
+  font-family: inherit;
+  font-size: clamp(1.1rem, 2.2vw, 1.75rem);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.boton:hover:not(:disabled) {
+  background-color: var(--azul);
+  color: var(--blanco);
+}
+
+.boton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.enlace {
+  color: var(--azul);
+  font-size: clamp(0.8rem, 1.6vw, 1.25rem);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.enlace:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Pantallas pequeñas ---------- */
+@media (max-width: 720px) {
+  .pantalla {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1.5rem;
+    background-size: auto 60%;
+    background-position: left bottom;
+  }
+
+  .logo {
+    position: static;
+    margin-bottom: 1.5rem;
+    width: 90px;
+  }
+
+  .roles {
+    grid-template-columns: 1fr;
+  }
+
+  .rol {
+    height: 52px;
+    font-size: 1rem;
+  }
+
+  .formulario {
+    padding-inline: 0;
+  }
+
+  .campo,
+  .error {
+    width: 100%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rol,
+  .boton {
+    transition: none;
+  }
+}

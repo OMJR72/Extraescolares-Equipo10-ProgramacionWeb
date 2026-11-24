@@ -1,0 +1,126 @@
+<div class="app">
+  <aside class="lateral" [class.lateral--abierto]="menuAbierto">
+    <div class="lateral__cabecera">
+      <div class="marca">
+        <span class="marca__logo">
+          <img src="logo.png" alt="Logo del Instituto Tecnológico de Oaxaca (ITO)" />
+        </span>
+        <span class="marca__nombre">Complementarias</span>
+      </div>
+
+      <button
+        class="lateral__alternar"
+        type="button"
+        aria-controls="menu-principal"
+        [attr.aria-expanded]="menuAbierto"
+        (click)="alternarMenu()"
+      >
+        <span class="visualmente-oculto">Abrir o cerrar el menú</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+        </svg>
+      </button>
+    </div>
+
+    <div class="lateral__cuerpo" id="menu-principal">
+      <nav class="menu" aria-labelledby="menu-titulo">
+        <p class="menu__titulo" id="menu-titulo">Menu Principal</p>
+
+        <ul class="menu__lista">
+          <li>
+            <a class="menu__enlace" routerLink="/inicio" routerLinkActive="menu__enlace--activo" ariaCurrentWhenActive="page">
+              <svg class="menu__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3 3.500 9.500V20a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1V9.500L12 3Z" fill="none" stroke="currentColor" stroke-width="2.500" stroke-linejoin="round" />
+              </svg>
+              <span class="menu__texto">Inicio</span>
+            </a>
+          </li>
+          <li>
+            <a class="menu__enlace" routerLink="/mis-grupos" routerLinkActive="menu__enlace--activo" ariaCurrentWhenActive="page">
+              <svg class="menu__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="7" r="3.200" fill="currentColor" />
+                <circle cx="4.500" cy="9.500" r="2.200" fill="currentColor" />
+                <circle cx="19.500" cy="9.500" r="2.200" fill="currentColor" />
+                <path d="M6 19c0-3.300 2.700-6 6-6s6 2.700 6 6v1H6v-1Z" fill="currentColor" />
+                <path d="M0.500 18c0-2.200 1.800-4 4-4 .8 0 1.500.2 2.100.6-1.200 1-2 2.400-2.200 4H.5Zm23 0c0-2.200-1.800-4-4-4-.8 0-1.500.2-2.100.6 1.200 1 2 2.400 2.200 4h3.900Z" fill="currentColor" />
+              </svg>
+              <span class="menu__texto">Mis Grupos</span>
+            </a>
+          </li>
+          <li>
+            <a class="menu__enlace" routerLink="/mi-perfil" routerLinkActive="menu__enlace--activo" ariaCurrentWhenActive="page">
+              <svg class="menu__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="10" r="3.300" fill="none" stroke="currentColor" stroke-width="2" />
+                <path d="M5.800 18.500c1.300-2.400 3.500-3.500 6.200-3.500s4.900 1.100 6.200 3.500" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              <span class="menu__texto">Mi Perfil</span>
+            </a>
+          </li>
+          <li>
+            <a class="menu__enlace" routerLink="/foro" routerLinkActive="menu__enlace--activo" ariaCurrentWhenActive="page">
+              <svg class="menu__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 3C7 3 3 6.800 3 11.500c0 2 .7 3.800 2 5.200-.2 1.400-.8 2.700-1.700 3.700 2.100-.1 3.900-.8 5.200-1.800 1.100.4 2.300.6 3.500.6 5 0 9-3.800 9-8.500S17 3 12 3Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+              <span class="menu__texto">Foro</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <hr class="lateral__separador" />
+
+      <button class="cerrar" type="button" (click)="cerrarSesion()">
+        <span class="cerrar__texto">Cerrar<br />sesión</span>
+        <svg class="cerrar__icono" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
+          <path d="M20 4H6a2 2 0 0 0-2 2v36a2 2 0 0 0 2 2h14" fill="none" stroke="currentColor" stroke-width="3" />
+          <path d="M20 4h22v40H20" fill="none" stroke="currentColor" stroke-width="3" />
+          <path d="M8 24h26M26 15l9 9-9 9" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <main class="principal">
+    <article class="contenido">
+      <h1 class="contenido__titulo">Bienvenido!</h1>
+
+      <section class="bloque" aria-labelledby="que-son">
+        <h2 class="bloque__titulo" id="que-son">¿Qué son las actividades complementarias?</h2>
+        <p class="bloque__texto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </p>
+      </section>
+
+      <section class="bloque" aria-labelledby="objetivo">
+        <h2 class="bloque__titulo" id="objetivo">Objetivo</h2>
+        <p class="bloque__texto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </p>
+      </section>
+
+      <section class="bloque" aria-labelledby="como-registro">
+        <h2 class="bloque__titulo" id="como-registro">¿Cómo me registro?</h2>
+        <p class="bloque__texto">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+          ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+        </p>
+      </section>
+
+      <div class="contenido__accion">
+        <a class="boton" routerLink="/mis-grupos">
+          <svg class="boton__icono" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="7" r="3.200" fill="currentColor" />
+            <circle cx="4.500" cy="9.500" r="2.200" fill="currentColor" />
+            <circle cx="19.500" cy="9.500" r="2.200" fill="currentColor" />
+            <path d="M6 19c0-3.300 2.700-6 6-6s6 2.700 6 6v1H6v-1Z" fill="currentColor" />
+            <path d="M0.500 18c0-2.200 1.800-4 4-4 .8 0 1.500.2 2.100.6-1.200 1-2 2.400-2.200 4H.5Zm23 0c0-2.200-1.800-4-4-4-.8 0-1.500.2-2.100.6 1.200 1 2 2.400 2.200 4h3.900Z" fill="currentColor" />
+          </svg>
+          <span class="boton__texto">Ir a Mis Grupos</span>
+        </a>
+      </div>
+    </article>
+  </main>
+</div>

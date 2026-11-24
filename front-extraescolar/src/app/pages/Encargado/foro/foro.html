@@ -1,0 +1,241 @@
+<div class="foro-layout">
+  <!-- Barra lateral izquierda -->
+  <aside class="sidebar">
+    <div class="sidebar-top">
+      <div class="brand">
+        <div class="brand-logo" aria-hidden="true">ITO</div>
+        <span class="brand-title">Complementarias</span>
+      </div>
+
+      <p class="menu-label">Menu Principal</p>
+
+      <nav class="nav-list" aria-label="Menú principal">
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="seleccionarSeccion('Inicio')"
+        >
+          <span class="nav-icon" aria-hidden="true">⌂</span>
+          <span>Inicio</span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="seleccionarSeccion('Mis Grupos')"
+        >
+          <span class="nav-icon" aria-hidden="true">👥</span>
+          <span>Mis Grupos</span>
+        </button>
+
+        <button
+          type="button"
+          class="nav-btn"
+          (click)="seleccionarSeccion('Mi Perfil')"
+        >
+          <span class="nav-icon" aria-hidden="true">◔</span>
+          <span>Mi Perfil</span>
+        </button>
+
+        <button type="button" class="nav-btn nav-btn--active">
+          <span class="nav-icon" aria-hidden="true">💬</span>
+          <span>Foro</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-divider"></div>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button
+        type="button"
+        class="logout-btn"
+        (click)="cerrarSesion()"
+      >
+        <span class="logout-text">
+          <span>CERRAR</span>
+          <span>SESIÓN</span>
+        </span>
+        <span class="logout-icon" aria-hidden="true">➔</span>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="main-content">
+    <h1 class="page-title">Foro - Fútbol</h1>
+
+    <!-- Encabezado de Avisos -->
+    <section class="avisos-header-card" aria-label="Encabezado de avisos">
+      <div class="avisos-header-left">
+        <span class="megáfono-icon" aria-hidden="true">📢</span>
+        <h2 class="avisos-title">Avisos</h2>
+      </div>
+
+      <button
+        type="button"
+        class="btn-agregar"
+        aria-label="Crear aviso"
+        title="Crear aviso"
+        (click)="abrirModal()"
+      >
+        <span class="plus-circle" aria-hidden="true">+</span>
+      </button>
+    </section>
+
+    <!-- Listado de avisos -->
+    <section class="avisos-list" aria-label="Lista de avisos">
+      <article *ngFor="let aviso of avisos" class="aviso-card">
+        <div class="aviso-top-row">
+          <div class="aviso-autor-group">
+            <span class="bubble-icon" aria-hidden="true">💬</span>
+            <span class="aviso-autor">De: {{ aviso.autor }}</span>
+          </div>
+
+          <button
+            type="button"
+            class="btn-eliminar"
+            aria-label="Eliminar aviso"
+            title="Eliminar aviso"
+            (click)="eliminarAviso(aviso.id)"
+          >
+            🗑
+          </button>
+        </div>
+
+        <p class="aviso-texto">{{ aviso.mensaje }}</p>
+
+        <p *ngIf="aviso.imagenAdjunta" class="aviso-adjunto">
+          [Imagen adjunta incluida]
+        </p>
+
+        <div class="aviso-footer">
+          <span class="aviso-fecha">{{ aviso.fechaHora }}</span>
+        </div>
+      </article>
+
+      <p *ngIf="avisos.length === 0" class="sin-avisos">
+        No hay avisos publicados por el momento. Presiona el botón verde (+) para crear uno.
+      </p>
+    </section>
+  </main>
+</div>
+
+<!-- Modal: Crear Aviso -->
+<div
+  *ngIf="mostrarModal"
+  class="modal-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalCrearAvisoTitulo"
+>
+  <div class="modal-card">
+    <header class="modal-header">
+      <h2 id="modalCrearAvisoTitulo" class="modal-title">Crear Aviso</h2>
+      <button
+        type="button"
+        class="modal-close-btn"
+        aria-label="Cerrar ventana"
+        (click)="cerrarModal()"
+      >
+        &times;
+      </button>
+    </header>
+
+    <form class="modal-body" (ngSubmit)="enviarAviso()">
+      <label for="mensajeAviso" class="field-label">Ingrese Mensaje:</label>
+
+      <textarea
+        id="mensajeAviso"
+        name="nuevoMensaje"
+        class="mensaje-textarea"
+        placeholder="Texto..."
+        rows="4"
+        [(ngModel)]="nuevoMensaje"
+        required
+      ></textarea>
+
+      <div class="toolbar-row">
+        <button
+          type="button"
+          class="tool-btn"
+          [class.tool-btn--active]="imagenSeleccionada"
+          aria-label="Adjuntar imagen"
+          title="Adjuntar imagen"
+          (click)="toggleImagen()"
+        >
+          🖼
+        </button>
+
+        <button
+          type="button"
+          class="tool-btn"
+          aria-label="Insertar emoji"
+          title="Insertar emoji"
+          (click)="insertarEmoji(' 😊')"
+        >
+          ☺
+        </button>
+
+        <span *ngIf="imagenSeleccionada" class="adjunto-badge">
+          Imagen lista
+        </span>
+      </div>
+
+      <div class="modal-actions">
+        <button
+          type="button"
+          class="btn-cancelar"
+          (click)="cerrarModal()"
+        >
+          Cancelar
+        </button>
+
+        <button
+          type="submit"
+          class="btn-enviar"
+        >
+          Enviar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal: Mensaje de Éxito -->
+<div
+  *ngIf="mostrarExito"
+  class="modal-backdrop"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="modalExitoTitulo"
+>
+  <div class="modal-card modal-card--compact">
+    <header class="modal-header">
+      <h2 id="modalExitoTitulo" class="modal-title">¡Operación Exitosa!</h2>
+      <button
+        type="button"
+        class="modal-close-btn"
+        aria-label="Cerrar mensaje de éxito"
+        (click)="cerrarExito()"
+      >
+        &times;
+      </button>
+    </header>
+
+    <div class="modal-body modal-body--center">
+      <div class="exito-icon" aria-hidden="true">✓</div>
+      <p class="exito-texto">{{ mensajeExito }}</p>
+
+      <div class="modal-actions modal-actions--center">
+        <button
+          type="button"
+          class="btn-enviar"
+          (click)="cerrarExito()"
+        >
+          Aceptar
+        </button>
+      </div>
+    </div>
+  </div>
+</div><p>foro works!</p>
