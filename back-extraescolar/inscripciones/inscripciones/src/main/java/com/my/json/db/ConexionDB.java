@@ -1,31 +1,53 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.my.json.db;
 
+import com.zaxxer.hikari.HikariConfig;
+import com.zaxxer.hikari.HikariDataSource;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.SQLException;
-/**
- *
- * @author DELL
- */
-public class ConexionDB {
-    
-    // stringtype=unspecified permite enviar fechas, horas y claves como texto
-    // y que PostgreSQL las convierta al tipo de la columna.
-    private static final String URL =
-            "jdbc:postgresql://localhost:5432/inscripciones?stringtype=unspecified";
-    private static final String USER = "postgres";
-    private static final String PASSWORD = "Oqpwwpqo7";
+
+public final class ConexionDB {
+
+    private static final HikariDataSource DATA_SOURCE = crearDataSource();
+
+    private ConexionDB() {
+    }
+
+    private static HikariDataSource crearDataSource() {
+        HikariConfig config = new HikariConfig();
+        config.setPoolName("inscripciones-pool");
+        config.setDriverClassName("org.postgresql.Driver");
+        config.setJdbcUrl(obtener("DB_URL", "jdbc:postgresql://localhost:5432/inscripciones?stringtype=unspecified"));
+        config.setUsername(obtener("DB_USER", "postgres"));
+        config.setPassword(obtener("DB_PASSWORD", "Oqpwwpqo7"));
+        config.setMaximumPoolSize(entero("DB_MAX_POOL_SIZE", 10));
+        config.setMinimumIdle(entero("DB_MIN_IDLE", 2));
+        config.setConnectionTimeout(30000);
+        config.setIdleTimeout(600000);
+        config.setMaxLifetime(1800000);
+        config.addDataSourceProperty("stringtype", "unspecified");
+        return new HikariDataSource(config);
+    }
+
+    private static String obtener(String nombre, String valorPorDefecto) {
+        String valor = System.getProperty(nombre, System.getenv(nombre));
+        return valor == null || valor.isBlank() ? valorPorDefecto : valor;
+    }
+
+    private static int entero(String nombre, int valorPorDefecto) {
+        try {
+            return Integer.parseInt(obtener(nombre, String.valueOf(valorPorDefecto)));
+        } catch (NumberFormatException e) {
+            return valorPorDefecto;
+        }
+    }
 
     public static Connection getConexion() throws SQLException {
-        try {
-            Class.forName("org.postgresql.Driver");
-            return DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            throw new SQLException("No se encontró el driver de PostgreSQL en el proyecto", e);
+        return DATA_SOURCE.getConnection();
+    }
+
+    public static void cerrar() {
+        if (!DATA_SOURCE.isClosed()) {
+            DATA_SOURCE.close();
         }
     }
 }

@@ -6,6 +6,7 @@ package com.my.json.dao;
 
 import com.my.json.db.ConexionDB;
 import com.my.json.modelos.Usuario;
+import com.my.json.util.PasswordHasher;
 import com.my.json.util.Sql;
 import java.sql.*;
 import java.util.ArrayList;
@@ -39,7 +40,7 @@ public class UsuarioDAO {
         ps.setString(2, u.getApellidoP());
         ps.setString(3, u.getApellidoM());
         ps.setString(4, u.getEmail());
-        ps.setString(5, u.getPassword());
+        ps.setString(5, PasswordHasher.hash(u.getPassword()));
         ps.setString(6, u.getTelefono());
         ps.setString(7, u.getEmailInstitucional());
         ps.setString(8, u.getNoDeControl());
@@ -110,6 +111,16 @@ public class UsuarioDAO {
              PreparedStatement ps = con.prepareStatement("DELETE FROM usuarios WHERE id_usuario = ?")) {
             ps.setInt(1, id);
             return ps.executeUpdate() > 0;
+        }
+    }
+
+    public boolean verificarCredenciales(String email, String password) throws SQLException {
+        try (Connection con = ConexionDB.getConexion();
+             PreparedStatement ps = con.prepareStatement("SELECT password FROM usuarios WHERE email = ?")) {
+            ps.setString(1, email);
+            try (ResultSet rs = ps.executeQuery()) {
+                return rs.next() && PasswordHasher.verificar(password, rs.getString("password"));
+            }
         }
     }
 }

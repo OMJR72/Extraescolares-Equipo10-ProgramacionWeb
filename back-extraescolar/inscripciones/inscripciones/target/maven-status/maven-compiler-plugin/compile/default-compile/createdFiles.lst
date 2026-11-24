@@ -6,6 +6,7 @@ com\my\json\util\Http.class
 com\my\json\modelos\Requisito.class
 com\my\json\dao\RequisitoDAO.class
 com\my\json\dao\SesionAsistenciaDAO.class
+com\my\json\util\PasswordHasher.class
 com\my\json\servlets\ActividadServlet.class
 com\my\json\servlets\GrupoServlet.class
 com\my\json\dao\InscripcionDAO.class
@@ -20,6 +21,7 @@ com\my\json\modelos\Usuario.class
 com\my\json\servlets\RolServlet.class
 com\my\json\modelos\Actividad.class
 com\my\json\db\ConexionDB.class
+com\my\json\db\ConexionDBListener.class
 com\my\inscripciones\JakartaRestConfiguration.class
 com\my\json\servlets\RequisitoServlet.class
 com\my\json\modelos\Carrera.class
