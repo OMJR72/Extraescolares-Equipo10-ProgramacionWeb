@@ -1,0 +1,41 @@
+<section class="page">
+
+  <header class="page-header">
+    <h1>Cambiar contraseña</h1>
+    <p>Establece una nueva contraseña para tu cuenta.</p>
+  </header>
+
+  <form class="form-card" #passwordForm="ngForm" (ngSubmit)="guardar()" novalidate>
+    <div class="campo">
+      <label for="nueva">Nueva contraseña</label>
+      <input
+        id="nueva"
+        name="nueva"
+        type="password"
+        [(ngModel)]="nuevaContrasena"
+        #nueva="ngModel"
+        required
+        minlength="6">
+      <p class="error" *ngIf="nueva.invalid && (nueva.dirty || nueva.touched)">
+        Debe tener al menos 6 caracteres.
+      </p>
+    </div>
+
+    <div class="campo">
+      <label for="confirmar">Confirmar contraseña</label>
+      <input
+        id="confirmar"
+        name="confirmar"
+        type="password"
+        [(ngModel)]="confirmarContrasena"
+        required>
+    </div>
+
+    <p class="error" *ngIf="error">{{ error }}</p>
+
+    <button type="submit" class="guardar" [disabled]="passwordForm.invalid">Guardar</button>
+
+    <p class="mensaje" *ngIf="mensaje">{{ mensaje }}</p>
+  </form>
+
+</section>

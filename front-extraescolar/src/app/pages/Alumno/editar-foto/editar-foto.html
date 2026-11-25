@@ -1,0 +1,36 @@
+<section class="page">
+
+  <header class="page-header">
+    <h1>Editar foto de perfil</h1>
+    <p>Selecciona una imagen desde tu equipo o usa la cámara si tu dispositivo la admite.</p>
+  </header>
+
+  <div class="foto-card">
+    <div class="preview">
+      <img *ngIf="preview" [src]="preview" alt="Vista previa de la foto de perfil">
+      <div *ngIf="!preview" class="placeholder">Vista previa</div>
+    </div>
+
+    <p *ngIf="nombreArchivo" class="nombre-archivo">{{ nombreArchivo }}</p>
+
+    <div class="acciones">
+      <label class="accion primaria">
+        Seleccionar imagen
+        <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden>
+      </label>
+
+      <label class="accion secundaria">
+        Tomar foto
+        <input type="file" accept="image/*" capture="environment" (change)="onFileSelected($event)" hidden>
+      </label>
+    </div>
+
+    <p class="ayuda">
+      «Tomar foto» usa la cámara en dispositivos compatibles. En escritorio abre el selector de archivos.
+    </p>
+
+    <button type="button" class="guardar" (click)="guardar()">Guardar</button>
+    <p *ngIf="mensaje" class="mensaje">{{ mensaje }}</p>
+  </div>
+
+</section>
