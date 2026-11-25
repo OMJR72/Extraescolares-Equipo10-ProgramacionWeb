@@ -1,0 +1,116 @@
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 205x;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: #111a30;
+  color: white;
+  padding: 12px 9px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 18px 18px 0;
+  font-family: Arial, sans-serif;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.logo img {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  object-fit: contain;
+  background: white;
+}
+
+.logo h2 {
+  font-size: 15px;
+}
+
+.menu-title {
+  color: #8991a3;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.menu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #2450d8;
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 17px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.menu a span {
+  width: 25px;
+  font-size: 21px;
+}
+
+.menu a:hover {
+  background-color: #4169e1;
+}
+
+.menu a.active {
+  background-color: white;
+  color: #2450d8;
+}
+
+.logout-button {
+  margin-top: auto;
+  margin-bottom: 45px;
+  background-color: #ff3545;
+  color: white;
+  border: none;
+  border-radius: 35px;
+  padding: 13px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.logout-button span {
+  font-size: 30px;
+}
+
+.a {
+  font-size: 14px;
+  font-family: Arial, sans-serif;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 160px;
+  }
+
+  .logo h2 {
+    font-size: 12px;
+  }
+
+  .menu a {
+    font-size: 14px;
+  }
+}

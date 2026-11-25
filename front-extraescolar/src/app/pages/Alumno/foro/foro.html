@@ -1,0 +1,18 @@
+<section class="page">
+
+  <header class="foro-header">
+    <span>Foro de la actividad</span>
+    <h1>{{ actividad }}</h1>
+  </header>
+
+  <div class="avisos">
+    <article class="aviso" *ngFor="let aviso of avisos">
+      <div class="aviso-topo">
+        <span class="autor">{{ aviso.autor }}</span>
+        <time class="fecha">{{ aviso.fecha }}</time>
+      </div>
+      <p class="contenido">{{ aviso.contenido }}</p>
+    </article>
+  </div>
+
+</section>
