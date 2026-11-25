@@ -1,0 +1,96 @@
+.page {
+  font-family: Arial, sans-serif;
+  color: #14182a;
+  width: 100%;
+}
+
+.page-header h1 {
+  font-size: 32px;
+  margin: 0 0 8px;
+}
+
+.page-header p {
+  margin: 0 0 28px;
+  color: #667085;
+  font-size: 17px;
+}
+
+.form-card {
+  max-width: 520px;
+  background: #ffffff;
+  border: 1px solid #d9e2f2;
+  border-radius: 10px;
+  padding: 30px;
+  box-sizing: border-box;
+}
+
+.campo {
+  margin-bottom: 24px;
+}
+
+.campo label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.campo input {
+  width: 100%;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid #cbd5e8;
+  border-radius: 6px;
+  padding: 0 14px;
+  font-size: 16px;
+  outline: none;
+}
+
+.campo input:focus {
+  border-color: #8ba8e8;
+}
+
+.error {
+  color: #c62828;
+  font-size: 14px;
+  margin: 8px 0 16px;
+}
+
+.guardar {
+  background: #2450d8;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  padding: 13px 26px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.guardar:hover:not(:disabled) {
+  background: #1b3fa9;
+}
+
+.guardar:disabled {
+  background: #aab3c2;
+  cursor: not-allowed;
+}
+
+.mensaje {
+  color: #2e7d32;
+  font-size: 15px;
+  margin: 16px 0 0;
+}
+
+@media (max-width: 768px) {
+  .page-header h1 {
+    font-size: 26px;
+  }
+
+  .page-header p {
+    font-size: 15px;
+  }
+
+  .form-card {
+    padding: 22px;
+  }
+}
