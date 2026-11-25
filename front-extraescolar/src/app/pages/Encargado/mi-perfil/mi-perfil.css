@@ -1,0 +1,374 @@
+:host {
+  --c-sidebar: #0f172a;
+  --c-primary: #1d4ed8;
+  --c-bg: #eff6ff;
+  --c-white: #ffffff;
+  --c-black: #000000;
+  --c-danger: #ff383c;
+  --c-field: #d9d9d9;
+  --c-muted: #4e586f;
+  --c-border: #999999;
+
+  display: block;
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  color: var(--c-black);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background: var(--c-bg);
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+  flex: 0 0 20%;
+  min-width: 220px;
+  max-width: 290px;
+  background: var(--c-sidebar);
+  display: flex;
+  flex-direction: column;
+  padding: 16px 12px 40px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 4px;
+}
+
+.brand__logo {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--c-white);
+  object-fit: contain;
+}
+
+.brand__name {
+  color: var(--c-white);
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 16px;
+  flex: 1;
+}
+
+.menu__title {
+  margin: 0;
+  padding-left: 4px;
+  color: var(--c-muted);
+  font-size: 1.05rem;
+}
+
+.menu__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 48px;
+  padding: 0 16px;
+  border-radius: 4px;
+  background: var(--c-primary);
+  color: var(--c-white);
+  font-weight: 700;
+  font-size: 1.35rem;
+  text-decoration: none;
+  transition: filter 0.15s ease;
+}
+
+.menu__item svg {
+  position: absolute;
+  left: 12px;
+  width: 26px;
+  height: 26px;
+  fill: currentColor;
+}
+
+.menu__item:hover {
+  filter: brightness(1.12);
+}
+
+.menu__item--active {
+  background: var(--c-white);
+  color: var(--c-primary);
+}
+
+.menu__divider {
+  width: 100%;
+  margin: 8px 0 0;
+  border: 0;
+  border-top: 1px solid var(--c-white);
+  opacity: 0.5;
+}
+
+.logout {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  width: 90%;
+  margin: 0 auto;
+  padding: 10px 18px 10px 28px;
+  border: 0;
+  border-radius: 40px;
+  background: var(--c-danger);
+  color: var(--c-white);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.15;
+  text-align: left;
+  cursor: pointer;
+}
+
+.logout svg {
+  width: 48px;
+  height: 48px;
+}
+
+.logout:hover {
+  filter: brightness(1.08);
+}
+
+/* ---------- Contenido ---------- */
+.content {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 32px 48px;
+}
+
+.title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+}
+
+.profile {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  justify-content: center;
+  gap: 48px 80px;
+  width: 100%;
+  max-width: 980px;
+  margin: 64px auto 0;
+}
+
+/* Foto */
+.photo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.photo__circle {
+  width: clamp(200px, 24vw, 336px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--c-field);
+}
+
+.photo__circle svg,
+.photo__img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Datos */
+.data {
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  padding: 0 46px;
+  border-radius: 18px;
+  background: var(--c-field);
+  font-size: 1.35rem;
+}
+
+.field label {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.field input {
+  flex: 1;
+  min-width: 0;
+  padding: 4px 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  outline: none;
+}
+
+.field input:enabled {
+  background: var(--c-white);
+}
+
+.field input:enabled:focus {
+  outline: 2px solid var(--c-primary);
+}
+
+.field:has(input.ng-invalid.ng-touched) {
+  outline: 2px solid var(--c-danger);
+}
+
+.form__actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 4px;
+}
+
+/* Botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--c-primary);
+  color: var(--c-white);
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: filter 0.15s ease;
+}
+
+.btn svg {
+  width: 22px;
+  height: 22px;
+  fill: currentColor;
+}
+
+.btn:hover {
+  filter: brightness(1.12);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--c-primary);
+  box-shadow: inset 0 0 0 2px var(--c-primary);
+}
+
+.password-link {
+  margin: auto auto 0;
+  padding: 48px 8px 0;
+  border: 0;
+  background: none;
+  color: var(--c-black);
+  font-family: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.password-link:hover {
+  color: var(--c-primary);
+  text-decoration: underline;
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 900px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    flex: none;
+    max-width: none;
+    width: 100%;
+    padding-bottom: 16px;
+  }
+
+  .menu {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .menu__title,
+  .menu__divider {
+    display: none;
+  }
+
+  .menu__item {
+    flex: 1 1 40%;
+    font-size: 1.1rem;
+  }
+
+  .logout {
+    width: 100%;
+    max-width: 260px;
+    margin-top: 16px;
+  }
+
+  .profile {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    margin-top: 40px;
+  }
+
+  .data {
+    width: 100%;
+    max-width: 520px;
+  }
+}
+
+@media (max-width: 600px) {
+  .content {
+    padding: 24px 16px 32px;
+  }
+
+  .field {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px 20px;
+    border-radius: 18px;
+    font-size: 1.1rem;
+  }
+
+  .password-link {
+    font-size: 1.15rem;
+  }
+}

@@ -1,0 +1,73 @@
+<main class="pantalla">
+  <img class="logo" src="logo.png" alt="Logo del Instituto Tecnológico de Oaxaca (ITO)" />
+
+  <section class="tarjeta" aria-labelledby="titulo-principal">
+    <header class="encabezado">
+      <h1 id="titulo-principal" class="titulo">Actividades complementarias</h1>
+      <h2 class="subtitulo">Inicio de sesión</h2>
+    </header>
+
+    <div class="roles" role="radiogroup" aria-label="Tipo de usuario">
+      @for (r of roles; track r.valor) {
+        <button
+          type="button"
+          class="rol"
+          role="radio"
+          [class.rol--activo]="rol === r.valor"
+          [attr.aria-checked]="rol === r.valor"
+          (click)="seleccionarRol(r.valor)"
+        >
+          {{ r.etiqueta }}
+        </button>
+      }
+    </div>
+
+    <form class="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+      <div class="campo">
+        <label class="campo__etiqueta" for="usuario">Usuario:</label>
+        <input
+          class="campo__entrada"
+          id="usuario"
+          type="text"
+          formControlName="usuario"
+          placeholder="ej.23160832"
+          autocomplete="username"
+        />
+      </div>
+
+      <div class="campo campo--password">
+        <label class="campo__etiqueta" for="contrasena">Contraseña:</label>
+        <input
+          class="campo__entrada"
+          id="contrasena"
+          [type]="mostrarContrasena ? 'text' : 'password'"
+          formControlName="contrasena"
+          placeholder="escribe aqui..."
+          autocomplete="current-password"
+        />
+
+        <label class="mostrar" for="mostrar-contrasena">
+          <input
+            class="mostrar__casilla"
+            id="mostrar-contrasena"
+            type="checkbox"
+            [checked]="mostrarContrasena"
+            (change)="alternarContrasena()"
+          />
+          <span>Mostrar contraseña</span>
+        </label>
+      </div>
+
+      @if (error) {
+        <p class="error" role="alert">{{ error }}</p>
+      }
+
+      <div class="acciones">
+        <button class="boton" type="submit" [disabled]="cargando">
+          {{ cargando ? 'Ingresando...' : 'Ingresar' }}
+        </button>
+        <a class="enlace" href="#">¿Olvidaste tu contraseña?</a>
+      </div>
+    </form>
+  </section>
+</main>

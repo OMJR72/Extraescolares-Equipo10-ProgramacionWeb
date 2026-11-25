@@ -1,0 +1,137 @@
+<div class="layout">
+  <!-- Barra lateral -->
+  <aside class="sidebar">
+    <div class="brand">
+      <img class="brand__logo" src="logo.png" alt="Logo Complementarias" />
+      <span class="brand__name">Complementarias</span>
+    </div>
+
+    <nav class="menu" aria-label="Menú principal">
+      <p class="menu__title">Menu Principal</p>
+
+      <a class="menu__item" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 11h2v9h5v-6h4v6h5v-9h2z" /></svg>
+        <span>Inicio</span>
+      </a>
+
+      <a class="menu__item" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="8" r="3" />
+          <circle cx="5" cy="10" r="2" />
+          <circle cx="19" cy="10" r="2" />
+          <path d="M12 12c-3 0-5 1.6-5 3.5V18h10v-2.5C17 13.6 15 12 12 12zM5 13c-2 0-3.5 1-3.5 2.5V17H5v-2c0-.7.3-1.4.8-2zM19 13c-.5 0-1 .1-1.4.3.5.6.9 1.1.9 1.7v2h3.5v-1.5C22 14 20.5 13 19 13z" />
+        </svg>
+        <span>Mis Grupos</span>
+      </a>
+
+      <a class="menu__item menu__item--active" href="#" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2" />
+          <circle cx="12" cy="10" r="3" />
+          <path d="M6.5 18c1-2.5 3-3.5 5.5-3.5s4.5 1 5.5 3.5c-1.5 1.5-3.4 2.3-5.5 2.3S8 19.5 6.5 18z" />
+        </svg>
+        <span>Mi Perfil</span>
+      </a>
+
+      <a class="menu__item" href="#">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 12a8 8 0 1 1 3 6.2L3 20l1.5-4A8 8 0 0 1 4 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+        </svg>
+        <span>Foro</span>
+      </a>
+
+      <hr class="menu__divider" />
+    </nav>
+
+    <button class="logout" type="button" (click)="cerrarSesion()">
+      <span>CERRAR<br />SESIÓN</span>
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="9" y="2" width="13" height="20" rx="1" fill="none" stroke="currentColor" stroke-width="2" />
+        <path d="M2 12h12M10 8l4 4-4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </button>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="content">
+    <h1 class="title">Mi Perfil</h1>
+
+    <div class="profile">
+      <!-- Foto -->
+      <section class="photo" aria-label="Foto de perfil">
+        <div class="photo__circle">
+          @if (fotoUrl) {
+            <img class="photo__img" [src]="fotoUrl" alt="Foto de perfil" />
+          } @else {
+            <svg viewBox="0 0 334 334" aria-hidden="true">
+              <circle cx="167" cy="167" r="166" fill="#d9d9d9" stroke="#0f172a" />
+              <circle cx="167" cy="119" r="59" fill="#eff6ff" stroke="#0f172a" />
+              <path d="M63 250c30-50 80-62 104-62s74 12 104 62c-30 30-70 45-104 45S93 280 63 250z" fill="#eff6ff" stroke="#0f172a" />
+            </svg>
+          }
+        </div>
+
+        <input #archivo class="visually-hidden" type="file" accept="image/*" (change)="onFotoSeleccionada($event)" />
+        <button class="btn" type="button" (click)="archivo.click()">
+          <span>Editar</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="9" cy="8" r="4" />
+            <path d="M1 20c0-3.500 3.500-6 8-6 1 0 2 .1 2.800.4L9 21H1zM20.700 11.300a1 1 0 0 1 0 1.400L12 21.500l-3 .5.5-3 8.800-8.700a1 1 0 0 1 1.400 0z" />
+          </svg>
+        </button>
+      </section>
+
+      <!-- Datos -->
+      <section class="data" aria-label="Datos personales">
+        <form class="form" [formGroup]="perfilForm" (ngSubmit)="onSubmit()" novalidate>
+          <div class="field">
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" type="text" formControlName="nombre" autocomplete="name" />
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" type="tel" formControlName="telefono" autocomplete="tel" />
+          </div>
+
+          <div class="field">
+            <label for="correo">Correo:</label>
+            <input id="correo" type="email" formControlName="correo" autocomplete="email" />
+          </div>
+
+          <div class="field">
+            <label for="correoAdicional">Correo Adicional:</label>
+            <input id="correoAdicional" type="email" formControlName="correoAdicional" />
+          </div>
+
+          <div class="field">
+            <label for="departamento">Departamento:</label>
+            <input id="departamento" type="text" formControlName="departamento" />
+          </div>
+
+          <div class="form__actions">
+            @if (editando) {
+              <button class="btn" type="submit">
+                <span>Guardar</span>
+              </button>
+              <button class="btn btn--ghost" type="button" (click)="cancelarEdicion()">
+                <span>Cancelar</span>
+              </button>
+            } @else {
+              <button class="btn" type="button" (click)="activarEdicion()">
+                <span>Editar</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="m3 17.200 0 3.800 3.800 0L18 9.800 14.200 6zM20.700 7a1 1 0 0 0 0-1.400l-2.300-2.300a1 1 0 0 0-1.400 0l-1.800 1.800L19 8.800z" />
+                </svg>
+              </button>
+            }
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <button class="password-link" type="button" (click)="cambiarContrasena()">
+      Deseas cambiar tu contraseña?
+    </button>
+  </main>
+</div><p>mi-perfil works!</p>
