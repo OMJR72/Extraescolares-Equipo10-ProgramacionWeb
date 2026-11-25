@@ -1,0 +1,66 @@
+<main class="login">
+  <!-- Marca de agua de fondo (guárdala en public/marca-agua.png) -->
+  <img class="login__marca-agua" src="marca-agua.png" alt="" aria-hidden="true" />
+
+  <!-- Logo (guárdalo en public/logo.png) -->
+  <img class="login__logo" src="logo.png" alt="Logotipo ITO" />
+
+  <section class="login__contenido">
+    <header class="login__encabezado">
+      <h1 class="login__titulo">Actividades Complementarias</h1>
+      <h2 class="login__subtitulo">Inicio de sesión</h2>
+    </header>
+
+    <div class="login__roles" role="tablist" aria-label="Tipo de usuario">
+      @for (rol of roles; track rol.valor) {
+        <button
+          type="button"
+          role="tab"
+          class="rol"
+          [class.rol--activo]="rolSeleccionado() === rol.valor"
+          [attr.aria-selected]="rolSeleccionado() === rol.valor"
+          (click)="seleccionarRol(rol.valor)"
+        >
+          {{ rol.etiqueta }}
+        </button>
+      }
+    </div>
+
+    <form class="formulario" [formGroup]="formulario" (ngSubmit)="onSubmit()" novalidate>
+      <div class="campo">
+        <label class="campo__etiqueta" for="usuario">Usuario:</label>
+        <input
+          id="usuario"
+          class="campo__input"
+          type="text"
+          formControlName="usuario"
+          placeholder="ej.23160832"
+          autocomplete="username"
+        />
+      </div>
+
+      <div class="campo">
+        <label class="campo__etiqueta" for="contrasena">Contraseña:</label>
+        <input
+          id="contrasena"
+          class="campo__input"
+          [type]="mostrarContrasena() ? 'text' : 'password'"
+          formControlName="contrasena"
+          placeholder="escribe aqui..."
+          autocomplete="current-password"
+        />
+        <label class="mostrar" for="mostrar-contrasena">
+          <input
+            id="mostrar-contrasena"
+            class="mostrar__check"
+            type="checkbox"
+            (change)="alternarMostrarContrasena($event)"
+          />
+          <span>Mostrar contraseña</span>
+        </label>
+      </div>
+
+      <button type="submit" class="formulario__enviar">Ingresar</button>
+    </form>
+  </section>
+</main>
