@@ -1,6 +1,7 @@
-
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+
+export type RolUsuario = 'alumno' | 'encargado' | 'administrador';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +12,20 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
-  selectedRole: string = 'ALUMNO';
+  readonly roles: { valor: RolUsuario; etiqueta: string }[] = [
+    { valor: 'alumno', etiqueta: 'ALUMNO' },
+    { valor: 'encargado', etiqueta: 'ENCARGADO' },
+    { valor: 'administrador', etiqueta: 'ADMINISTRADOR' },
+  ];
+
+  selectedRole: RolUsuario = 'alumno';
 
   username: string = '';
   password: string = '';
 
   showPassword: boolean = false;
 
-  selectRole(role: string) {
+  selectRole(role: RolUsuario) {
     this.selectedRole = role;
   }
 
@@ -27,8 +34,9 @@ export class LoginComponent {
   }
 
   login() {
-    console.log('Usuario:', this.username);
-    console.log('Contraseña:', this.password);
-    console.log('Tipo de usuario:', this.selectedRole);
+    console.log('Inicio de sesión:', {
+      rol: this.selectedRole,
+      usuario: this.username,
+    });
   }
 }

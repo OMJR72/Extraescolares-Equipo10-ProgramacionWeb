@@ -86,9 +86,13 @@ export const routes: Routes = [
 
   {
     path: 'admin/inicio-sesion',
-    loadComponent: () =>
-      import('./pages/Administrador/inicio-sesion/inicio-sesion')
-        .then(m => m.InicioSesion)
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'inicio-sesion',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
   path: 'admin/administrar-usuario',

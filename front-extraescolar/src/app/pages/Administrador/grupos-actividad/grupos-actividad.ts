@@ -400,7 +400,7 @@ export class GruposActividad {
 
   cerrarSesion(): void {
     // TODO: limpiar la sesión con el servicio de autenticación.
-    this.router.navigate(['/inicio-sesion']);
+    this.router.navigate(['/login']);
   }
 
   private grupoSeleccionado(): Grupo | undefined {

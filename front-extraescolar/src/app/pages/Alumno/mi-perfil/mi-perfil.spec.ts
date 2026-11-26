@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideRouter } from '@angular/router';
 import { MiPerfil } from './mi-perfil';
 
 describe('MiPerfil', () => {
@@ -8,6 +9,7 @@ describe('MiPerfil', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [MiPerfil],
+      providers: [provideRouter([])],
     }).compileComponents();
 
     fixture = TestBed.createComponent(MiPerfil);

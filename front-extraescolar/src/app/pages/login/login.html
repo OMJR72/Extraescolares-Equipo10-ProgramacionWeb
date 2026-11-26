@@ -14,20 +14,14 @@
     </header>
 
     <div class="role-selector">
-      <button
-        type="button"
-        [class.active]="selectedRole === 'ALUMNO'"
-        (click)="selectRole('ALUMNO')">
-        ALUMNO
-      </button>
-
-      <button
-        type="button"
-        [class.active]="selectedRole === 'ENCARGADO'"
-        (click)="selectRole('ENCARGADO')">
-        ENCARGADO
-      </button>
-
+      @for (rol of roles; track rol.valor) {
+        <button
+          type="button"
+          [class.active]="selectedRole === rol.valor"
+          (click)="selectRole(rol.valor)">
+          {{ rol.etiqueta }}
+        </button>
+      }
     </div>
 
     <form (ngSubmit)="login()">

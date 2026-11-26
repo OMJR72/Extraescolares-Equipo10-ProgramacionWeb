@@ -17,8 +17,8 @@ interface Estudiante {
 @Component({
   imports: [],
   selector: 'app-info-grupo',
-  styleUrl: './inicio-sesion.css',
-  templateUrl: './inicio-sesion.html',
+  styleUrl: './info-grupo.css',
+  templateUrl: './info-grupo.html',
 })
 export class InfoGrupo {
   // Datos de ejemplo: reemplazar por la respuesta de tu servicio HTTP.
